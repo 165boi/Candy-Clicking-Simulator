@@ -1,0 +1,20 @@
+_G.autoTap = true;
+_G.autoRebirth = true;
+local remotePath = game:GetService("ReplicatedStorage").Events;
+
+spawn(function()
+    while _G.autoTap == true do
+        remotePath.ClickEvent:FireServer()
+        wait()
+    end
+end)
+
+spawn(function()
+    while _G.autoRebirth == true do
+        local args = {[1] = 1000}
+        remotePath.Rebirth:InvokeServer(unpack(args))
+        wait()
+    end
+end)
+
+print('Bossy2889')
